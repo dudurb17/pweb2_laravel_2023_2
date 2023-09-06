@@ -49,4 +49,4 @@ Route::get('/teste', function () {
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name("aluno.home");

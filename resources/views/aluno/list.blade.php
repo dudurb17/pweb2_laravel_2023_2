@@ -6,7 +6,7 @@
 
 
 
-<h3 class="pt-4 text-2xl font-medium">Listagem de Alunos</h3>
+    <h3 class="pt-4 text-2xl font-medium">Listagem de de lojas</h3>
     <div
         class="block w-full flex space-x-3 rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
 
@@ -53,11 +53,11 @@
                         <thead class="border-b font-medium dark:border-neutral-500">
                             <tr>
                                 <th scope="col" class="px-6 py-4">ID</th>
-                                <th scope="col" class="px-6 py-4">Imagem</th>
-                                <th scope="col" class="px-6 py-4">Nome</th>
-                                <th scope="col" class="px-6 py-4">Data Nascimento</th>
+
+                                <th scope="col" class="px-6 py-4">Nome da roupa</th>
+                                <th scope="col" class="px-6 py-4">Data da entrega</th>
                                 <th scope="col" class="px-6 py-4">Email</th>
-                                <th scope="col" class="px-6 py-4">CPF</th>
+                                <th scope="col" class="px-6 py-4">CNPJ</th>
                                 <th scope="col" class="px-6 py-4">Telefone</th>
                                 <th scope="col" class="px-6 py-4">Categoria</th>
                                 <th scope="col" class="px-6 py-4">Ações</th>
@@ -66,14 +66,9 @@
                         </thead>
                         <tbody>
                             @foreach ($alunos as $item)
-                                @php
-                                    $nome_imagem = !empty($item->imagem) ? $item->imagem : 'sem_imagem.jpg';
-                                @endphp
                                 <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
-                                    <td class="h-32 w-32 object-cover rounded-full"><img src="/storage/{{ $nome_imagem }}" width="100px"
-                                            alt="imagem"></td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->nome }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->data_nascimento }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $item->email }}</td>
