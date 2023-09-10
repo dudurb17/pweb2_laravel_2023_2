@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('aluno', function (Blueprint $table) {
-           $table->String('imagem',150)->nullable();
+        Schema::create('produto', function (Blueprint $table) {
+            $table->id();
+            $table->string("nome_peca");
+            $table->string("codigo");
+            $table->string("tamanho");
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('aluno', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('produto');
     }
 };

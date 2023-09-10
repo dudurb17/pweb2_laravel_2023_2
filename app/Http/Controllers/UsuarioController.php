@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use stdClass;
+use App\Models\User;
 
 
 class UsuarioController extends Controller
@@ -33,4 +34,77 @@ class UsuarioController extends Controller
 
         return view('index', ["pessoas" => $pessoas]);
     }
+
+    public function listUsers()
+    {
+        $users = User::all();
+
+        return view('user.listUsers')->with(['users'=> $users]);
+    }
+
+    public function createUser(Request $request){
+
+        $dados = ['nome'=> $request->name,
+        'email'=> $request->email,
+        'password'=>$request->password,
+        ];
+
+        $user = new User();
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->save();
+
+        return redirect('user.listUsers')->with('success', "Cadastrado com sucesso!");
+
+    }
+
+    public function destroy($id)
+    {
+        $users = User::findOrFail($id);
+
+        $users->delete();
+
+        return redirect('users')->with('success', "Removido com sucesso!");
+    }
+
+    public function update(Request $request, User $users)
+    {
+
+        $request->validate([
+            'name'=>'required|max:100',
+
+        ],[
+            'name.required'=>"O :attribute é obrigatorio!",
+            'name.max'=>" Só é permitido 120 caracteres no :attribute !",
+
+        ]);
+
+        $dados = ['name'=> $request->name,
+            'email'=> $request->email,
+
+
+        ];
+
+
+
+        User::updateOrCreate(
+            ['id'=>$request->id],
+            $dados);
+
+
+        return redirect('users')->with('success', "Atualizado com sucesso!");
+
+    }
+
+    public function edit($id)
+    {
+        $Users = User::find($id); //select * from aluno where id = $id
+        return view('user.formUser')->with([
+            'users'=> $Users,]);
+    }
+
+
+
+
 }

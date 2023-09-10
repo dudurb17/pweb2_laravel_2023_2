@@ -5,20 +5,23 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 use Faker\Factory as Faker;
 
-class AlunoSeeder extends Seeder
+class UserSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
         $fake = Faker::create("pt_BR");
         foreach(\range(1,5) as $index){
-            DB::table('aluno')->insert(
-                ['nome'=>$fake->name,
+            DB::table('pedido')->insert(
+                ['name'=>$fake->name,
                  'email'=>$fake->email,
-                 'telefone'=>$fake->phoneNumber,
-                 'data_nascimento'=>$fake->date,
-                 'cpf'=>$fake->number,
+                 'email_verifie_at'=>now(),
+                 'password'=>$fake->password,
                 ]
             );
         }

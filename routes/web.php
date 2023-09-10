@@ -3,50 +3,65 @@
 use Illuminate\Support\Facades\Route;
 //importar o arquivo do controlador
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\PedidoController;
+
+Route::get('/', function () {
+    return view('welcome');
+})->name("home");
+
 
 //chamar uma função do controlador
 Route::get('/usuario', [UsuarioController::class, 'index']);
 
 //carrega uma listagem do banco
-Route::get('/aluno',
-    [AlunoController::class, 'index'])->name('aluno.index');
+Route::get('/users',
+    [UsuarioController::class, 'listUsers'])->name('user.list');
 
-//chama o formulário do aluno
-Route::get('/aluno/create',
-    [AlunoController::class, 'create'])->name('aluno.create');
+//chama o formulário do user
+Route::get('/user/create', function () {
+    return view('user.formUser');
+})->name('user.formUser');
 
- //realiza a ação de salvar do formulário
- Route::post('/aluno',
-    [AlunoController::class, 'store'])->name('aluno.store');
+//realiza a ação de cadastrar um novo usuario
+Route::post('/user/cadastrar',
+    [UsuarioController::class, 'createUser'])->name('user.create');
 
 //chama o formulário para edição
-Route::get('/aluno/edit/{id}',
-    [AlunoController::class, 'edit'])->name('aluno.edit');
+Route::get('/user/edit/{id}',
+    [UsuarioController::class, 'edit'])->name('user.edit');
 
  //realiza a ação de atualizar os dados do formulário
- Route::put('/aluno/update/{id}',
-    [AlunoController::class, 'update'])->name('aluno.update');
+Route::post('/user/update/{id}',
+    [UsuarioController::class, 'update'])->name('user.update');
 
 //chama o método para excluir o registro
-Route::get('/aluno/destroy/{id}',
-    [AlunoController::class, 'destroy'])->name('aluno.destroy');
+Route::get('/user/destroy/{id}',
+    [UsuarioController::class, 'destroy'])->name('user.destroy');
 
 //chama o método para serch para pesquisar e filtrar o registro da listagem
-Route::post('/aluno/search',
-    [AlunoController::class, 'search'])->name('aluno.search');
+Route::post('/user/search',
+    [UsuarioController::class, 'search'])->name('user.search');
 
 //chamar uma página em HTML
 Route::get('/pagina', function () {
     return view('index');
 });
 
-//chama um HTML
-Route::get('/teste', function () {
-    return "<h4>Olá Mundo Laravel!</h4>";
-});
+Route::get('/pedidos',
+    [PedidoController::class, 'listPedidos'])->name('pedido.list');
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("aluno.home");
+Route::get('/pedidos/create',
+    [PedidoController::class, 'createPedido'])->name('pedido.create');
+
+Route::post('/pedidos/cadastrar',
+    [PedidoController::class, 'cadastrarPedido'])->name('pedido.cadastrar');
+
+Route::get('/pedidos/edit/{id}',
+    [PedidoController::class, 'editPedido'])->name('pedido.edit');
+
+Route::get('/pedidos/update/{id}',
+    [PedidoController::class, 'updatePedido'])->name('pedido.update');
+
+Route::get('/pedidos/destroy/{id}',
+    [PedidoController::class, 'destroyPedido'])->name('pedido.destroy');

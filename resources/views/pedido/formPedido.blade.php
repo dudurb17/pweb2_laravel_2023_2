@@ -1,21 +1,14 @@
 @extends('base.app')
 
-@section('titulo', 'Formulário de Aluno')
+@section('titulo', 'Formulário de Pedido')
 
 @section('content')
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
     @php
-        // dd($aluno); // é igual ao var_dump()
-        if (!empty($aluno->id)) {
-            $route = route('aluno.update', $aluno->id);
+        // dd($pedido); // é igual ao var_dump()
+        if (!empty($pedido->id)) {
+            $route = route('pedido.update', $pedido->id);
         } else {
-            $route = route('aluno.store');
+            $route = route('pedido.cadastrar');
         }
     @endphp
     <div class="mx-auto py-12 divide-y md:max-w-4xl">
@@ -31,32 +24,32 @@
                 @endif
 
                 <input type="hidden" name="id"
-                    value="@if (!empty($aluno->id)) {{ $aluno->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
+                    value="@if (!empty($pedido->id)) {{ $pedido->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
 
                 <label class="block">
                     <span class="text-gray-700">Nome da peça</span>
-                    <input type="text" name="nome"
+                    <input type="text" name="name"
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black"
-                        value="@if (!empty($aluno->nome)) {{ $aluno->nome }} @elseif(!empty(old('nome'))) {{ old('nome') }} @else {{ '' }} @endif">
+                        value="@if (!empty($pedido->name)) {{ $pedido->name }} @elseif(!empty(old('name'))) {{ old('name') }} @else {{ '' }} @endif">
                 </label>
                 <div class="mb-4 md:flex grid grid-rows-2">
                     <div class="relative mb-6">
                         <label class="block">
                             <span class="text-gray-700">Data da entrega</span>
-                            <input type="date" name="data_nascimento"
+                            <input type="date" name="data_pedido"
                                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black"
-                                value="@if (!empty($aluno->data_nascimento)) {{ $aluno->data_nascimento }} @elseif (!empty(old('data_nascimento'))){{ old('data_nascimento') }}@else{{ '' }} @endif">
+                                value="@if (!empty($pedido->data_pedido)) {{ $pedido->data_pedido }} @elseif (!empty(old('data_pedido'))){{ old('data_pedido') }}@else{{ '' }} @endif">
                         </label>
                     </div>
                     <div class="md-4 md:mr-2 md:mb-0 col-span-2">
                         <label class="block">
-                            <span class="text-gray-700">CPF</span>
-                            <input type="text" name="cpf"
+                            <span class="text-gray-700">CNPJ</span>
+                            <input type="text" name="cnpj"
                                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                         focus:ring-0 focus:border-black"
-                                value=" @if (!empty($aluno->cpf)) {{ $aluno->cpf }}@elseif(!empty(old('cpf'))){{ old('cpf') }}@else{{ '' }} @endif"><br><br>
+                                value=" @if (!empty($pedido->cpf)) {{ $pedido->cpf }}@elseif(!empty(old('cpf'))){{ old('cpf') }}@else{{ '' }} @endif"><br><br>
                         </label>
                     </div>
                 </div>
@@ -65,30 +58,27 @@
                     <input type="email" name="email"
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
-                        value="@if (!empty($aluno->email)) {{ $aluno->email }}@elseif(!empty(old('email'))) {{ old('email') }} @else{{ '' }} @endif"><br><br>
+                        value="@if (!empty($pedido->email)) {{ $pedido->email }}@elseif(!empty(old('email'))) {{ old('email') }} @else{{ '' }} @endif"><br><br>
                 </label>
 
                 <label class="block">
-                    <span class="text-gray-700">Telefone</span>
-                    <input type="text" name="telefone"
+                    <span class="text-gray-700">Quantidade</span>
+                    <input type="text" name="Quantidade"
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black"
-                        value="@if (!empty(old('telefone'))) {{ old('telefone') }}@elseif(!empty($aluno->telefone)){{ $aluno->telefone }}@else{{ '' }} @endif"><br><br>
+                        value="@if (!empty(old('Quantidade'))) {{ old('Quantidade') }}@elseif(!empty($pedido->Quantidade)){{ $pedido->Quantidade }}@else{{ '' }} @endif"><br><br>
                 </label>
-                {{-- dd($categorias) --}}
+
                 <label class="block">
-                    <span class="text-gray-700">Categoria</span>
-                    <select name="categoria_aluno_id"
+                    <span class="text-gray-700">Usuario</span>
+                    <select name="user_id"
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black">
-                        @foreach ($categorias as $item)
-                            <option value="{{ $item->id }}">{{ $item->nome }}</option>
+                        @foreach ($users as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </label>
-                @php
-                    $nome_imagem = !empty($aluno->imagem) ? $aluno->imagem : 'sem_imagem.jpg';
-                @endphp
 
 
         </div>
@@ -99,7 +89,7 @@
             type="submit">Salvar</button>
 
         <button><a class="rounded-full text-neutral-100 bg-blue-700 px-4 py-2 w-40 font-bold hover:bg-blue-300"
-                href="{{ route('aluno.index') }}">Voltar</a></button>
+                href="{{ route('pedido.list') }}">Voltar</a></button>
         </form>
     </div>
     </div>

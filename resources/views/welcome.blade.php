@@ -9,7 +9,7 @@
         alt="">
     <button
         class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
-        type="submit"><a href="{{ route('aluno.create') }}">Cadastrar estoque</a></button>
+        type="submit"><a href="{{ route('user.create') }}">Cadastrar estoque</a></button>
 
 
 
