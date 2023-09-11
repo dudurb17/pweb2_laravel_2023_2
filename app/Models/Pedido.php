@@ -15,7 +15,16 @@ class Pedido extends Model
         'cnpj',
         'data_pedido',
         'email',
-        'quantidade',
-        'nome_peca'
+        'Quantidade',
+        'produto_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class,
+            'user_id','id');
+    }
+    public function product(){
+        return $this->belongsTo(Produto::class,
+            'produto_id','id');
+    }
 }

@@ -20,17 +20,18 @@ class PedidoFactory extends Factory
     public function definition(): array
     {
         $usersId= DB::table('users')->pluck('id');
+        $produtos=DB::table("produto")->pluck('id');
 
         $faker = Faker::create("pt_BR");
 
         return [
             'user_id' => $faker->randomElement($usersId),
-            'produto_id' => "1",
+            'produto_id' =>$faker->randomElement($produtos),
             "cnpj" => fake()->name(),
             'data_pedido'=>fake()->date(),
             'email' => fake()->unique()->safeEmail(),
             'quantidade' => strval(rand(0, 99)),
-            'nome_peca' => fake()->name(), // password
+
 
         ];
     }

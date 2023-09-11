@@ -17,6 +17,7 @@ class PedidoSeeder extends Seeder
     public function run(): void
     {
         $usersId= DB::table('users')->pluck('id');
+        $produto= DB::table('produto')->pluck('id');
 
         $faker = Faker::create("pt_BR");
 
@@ -26,12 +27,11 @@ class PedidoSeeder extends Seeder
             DB::table('pedidos')->insert(
                 [
                     'user_id'=>$faker->randomElement($usersId),
-                    'pedido_id'=>"1",
+                    'pedido_id'=>$faker->randomElement($produto),
                     'cnpj'=>$faker->number,
                     'data_pedido'=>$faker->date,
                     'email'=>$faker->email,
                     'Quantidade'=>range(0, 9999999),
-                    'nome_peca'=>$faker->name
 
                 ]
             );

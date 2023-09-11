@@ -20,9 +20,9 @@
                 @csrf
                 <!-- cria um hash de segurança -->
 
-                @if (!empty($user->id))
+                {{-- @if (!empty($user->id))
                     @method('PUT')
-                @endif
+                @endif --}}
 
                 <input type="hidden" name="id"
                     value="@if (!empty($users->id)) {{ $users->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
@@ -45,13 +45,13 @@
 
 
                 @if (empty($users->id))
-                <label class="block">
-                    <span class="text-gray-700">Senha</span>
-                    <input type="password" name="password"
-                        class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
+                    <label class="block">
+                        <span class="text-gray-700">Senha</span>
+                        <input type="password" name="password"
+                            class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black"
-                        value="@if (!empty(old('senha'))) {{ old('senha') }}@elseif(!empty($users->senha)){{ $users->senha }}@else{{ '' }} @endif"><br><br>
-                </label>
+                            value="@if (!empty(old('senha'))) {{ old('senha') }}@elseif(!empty($users->senha)){{ $users->senha }}@else{{ '' }} @endif"><br><br>
+                    </label>
                 @endif
 
 

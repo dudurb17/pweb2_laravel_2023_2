@@ -43,9 +43,13 @@
                         <a href="{{ route('user.list') }}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
                             Usuarios</a>
+                        <a href="{{ route('produto.list') }}"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
+                            Produtos</a>
                         <a href="{{ route('pedido.list') }}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
                             Pedidos</a>
+
 
 
                     </div>

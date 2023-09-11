@@ -19,20 +19,24 @@
                 @csrf
                 <!-- cria um hash de segurança -->
 
-                @if (!empty($aluno->id))
+                {{-- @if (!empty($pedido->id))
                     @method('PUT')
-                @endif
+                @endif --}}
 
                 <input type="hidden" name="id"
                     value="@if (!empty($pedido->id)) {{ $pedido->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
-
                 <label class="block">
                     <span class="text-gray-700">Nome da peça</span>
-                    <input type="text" name="name"
+                    <select name="produto_id"
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
-                    focus:ring-0 focus:border-black"
-                        value="@if (!empty($pedido->name)) {{ $pedido->name }} @elseif(!empty(old('name'))) {{ old('name') }} @else {{ '' }} @endif">
+                    focus:ring-0 focus:border-black">
+                        @foreach ($produto as $item)
+                            <option value="{{ $item->id }}">{{ $item->nome_peca }}</option>
+                        @endforeach
+                    </select>
                 </label>
+
+
                 <div class="mb-4 md:flex grid grid-rows-2">
                     <div class="relative mb-6">
                         <label class="block">
@@ -40,7 +44,8 @@
                             <input type="date" name="data_pedido"
                                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black"
-                                value="@if (!empty($pedido->data_pedido)) {{ $pedido->data_pedido }} @elseif (!empty(old('data_pedido'))){{ old('data_pedido') }}@else{{ '' }} @endif">
+                                value="@if (!empty($pedido->data_pedido)) {{ $pedido->data_pedido }} @elseif (!empty(old('data_pedido'))){{ old('data_pedido') }}@else{{ '' }} @endif"
+                                required>
                         </label>
                     </div>
                     <div class="md-4 md:mr-2 md:mb-0 col-span-2">
@@ -49,7 +54,8 @@
                             <input type="text" name="cnpj"
                                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                         focus:ring-0 focus:border-black"
-                                value=" @if (!empty($pedido->cpf)) {{ $pedido->cpf }}@elseif(!empty(old('cpf'))){{ old('cpf') }}@else{{ '' }} @endif"><br><br>
+                                required
+                                value=" @if (!empty($pedido->cnpj)) {{ $pedido->cnpj }}@elseif(!empty(old('cnpj'))){{ old('cnpj') }}@else{{ '' }} @endif"><br><br>
                         </label>
                     </div>
                 </div>
@@ -68,6 +74,9 @@
                     focus:ring-0 focus:border-black"
                         value="@if (!empty(old('Quantidade'))) {{ old('Quantidade') }}@elseif(!empty($pedido->Quantidade)){{ $pedido->Quantidade }}@else{{ '' }} @endif"><br><br>
                 </label>
+
+
+
 
                 <label class="block">
                     <span class="text-gray-700">Usuario</span>

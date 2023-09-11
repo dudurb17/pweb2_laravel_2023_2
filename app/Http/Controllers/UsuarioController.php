@@ -54,8 +54,8 @@ class UsuarioController extends Controller
         $user->email = $request->email;
         $user->name = $request->name;
         $user->save();
-
-        return redirect('user.listUsers')->with('success', "Cadastrado com sucesso!");
+        $users = User::all();
+        return view('user.listUsers')->with(['users'=> $users]);
 
     }
 
@@ -102,6 +102,21 @@ class UsuarioController extends Controller
         $Users = User::find($id); //select * from aluno where id = $id
         return view('user.formUser')->with([
             'users'=> $Users,]);
+    }
+
+    public function search(Request $request)
+    {
+        if(!empty($request->valor)){
+            $users = User::where(
+                $request->tipo,
+                 'like' ,
+                "%". $request->valor."%"
+                )->get();
+        } else {
+            $users = User::all();
+        }
+
+        return view('user.listUsers')->with(['users'=>$users]);
     }
 
 

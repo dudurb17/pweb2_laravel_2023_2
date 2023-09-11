@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 //importar o arquivo do controlador
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProdutoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,6 +43,12 @@ Route::get('/user/destroy/{id}',
 Route::post('/user/search',
     [UsuarioController::class, 'search'])->name('user.search');
 
+Route::post('/produto/search',
+    [ProdutoController::class, 'search'])->name('produto.search');
+
+Route::post('/pedido/search',
+    [PedidoController::class, 'search'])->name('pedido.search');
+
 //chamar uma página em HTML
 Route::get('/pagina', function () {
     return view('index');
@@ -60,8 +67,29 @@ Route::post('/pedidos/cadastrar',
 Route::get('/pedidos/edit/{id}',
     [PedidoController::class, 'editPedido'])->name('pedido.edit');
 
-Route::get('/pedidos/update/{id}',
-    [PedidoController::class, 'updatePedido'])->name('pedido.update');
+Route::post('/pedidos/update/{id}',
+    [PedidoController::class, 'update'])->name('pedido.update');
 
 Route::get('/pedidos/destroy/{id}',
     [PedidoController::class, 'destroyPedido'])->name('pedido.destroy');
+
+Route::get('/produto',
+    [ProdutoController::class, 'listProduto'])->name('produto.list');
+
+Route::get('/produto/create',
+    [ProdutoController::class, 'createProduto'])->name('produto.create');
+
+Route::post('/produto/cadastrar',
+    [ProdutoController::class, 'cadastrarProduto'])->name('produto.cadastrar');
+
+Route::post('/pedido/cadastrar',
+    [PedidoController::class, 'cadastrarPedido'])->name('pedido.cadastrar');
+Route::get('/produto/destroy/{id}',
+    [ProdutoController::class, 'destroyProduto'])->name('produto.destroy');
+
+    //chama o formulário para edição
+Route::get('/produto/edit/{id}',
+[ProdutoController::class, 'edit'])->name('produto.edit');
+
+Route::post('/produto/update/{id}',
+    [ProdutoController::class, 'update'])->name('produto.update');

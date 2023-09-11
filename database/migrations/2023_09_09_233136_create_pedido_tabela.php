@@ -11,19 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::disableForeignKeyConstraints();
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned()->index()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('user_id')->unsigned()->index()->nullable()->constrained('name');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->constrained('name');
             $table->bigInteger("produto_id")->unsigned()->index()->nullable();
             $table->foreign('produto_id')->references('id')->on('produto')->onDelete('cascade');
             $table->string("cnpj");
             $table->date("data_pedido");
             $table->string('email');
             $table->string("Quantidade");
-            $table->string("nome_peca");
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     public function down(): void
