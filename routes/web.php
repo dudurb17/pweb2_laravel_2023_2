@@ -5,11 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\funcionarioController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name("home");
 
+Route::get('/funcionario',
+    [funcionarioController::class, 'listFuncionario'])->name('funcionario.listFuncionario');
 
 //chamar uma função do controlador
 Route::get('/usuario', [UsuarioController::class, 'index']);
