@@ -21,7 +21,7 @@
             <!--First name input-->
             <div class="relative mb-6" data-te-input-wrapper-init>
                 <select name="tipo"
-                    class="peer block min-h-[auto] w-full rounded border-0 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder data-[te-input-state-active]:placeholder motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-1">
+                    class="g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="name">Nome</option>
                     <option value="email">Email</option>
 
@@ -31,7 +31,7 @@
             <!--Last name input-->
             <div class="relative mb-6" data-te-input-wrapper-init>
                 <input
-                    class="peer block min-h-[auto] w-full rounded border-0 bg px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear  motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]"
+                    class="g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     type="text" name="valor" placeholder="Pesquisar">
             </div>
             <!--Submit button-->

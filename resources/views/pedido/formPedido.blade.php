@@ -18,6 +18,17 @@
                 class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4">
                 @csrf
                 <!-- cria um hash de segurança -->
+                @if ($errors->any())
+                    <div class="mb-4 rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700" role="alert">Erro!
+                        @if ($errors->any())
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                @endif
 
                 {{-- @if (!empty($pedido->id))
                     @method('PUT')

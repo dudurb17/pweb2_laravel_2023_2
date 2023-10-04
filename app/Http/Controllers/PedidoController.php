@@ -27,16 +27,26 @@ class PedidoController extends Controller
 
     public function cadastrarPedido (Request $request) {
 
-        $pedido = new Pedido();
-        $pedido->user_id = $request->user_id;
-        $pedido->cnpj = $request->cnpj;
-        $pedido->data_pedido = $request->data_pedido;
-        $pedido->email = $request->email;
-        $pedido->Quantidade = $request->Quantidade;
-        $pedido->produto_id=$request->produto_id;
-        $pedido->save();
-        $pedido = Pedido::all();
-        return view('pedido.listPedido')->with(['pedido'=> $pedido]);
+        $request->validate([
+            'cnpj'=>'required|min:3',
+            'email'=>"required",
+            "Quantidade"=>"required"
+        ],[
+            'cnpj.required'=>"O :attribute é obrigatorio!",
+            'email.max'=>"O :attribute é obrigatorio!",
+            'Quantidade.required'=>"O :attribute é obrigatorio!",
+        ]);
+
+        $dados = ['user_id'=> $request->user_id,
+        'email'=> $request->email,
+        'cnpj'=>$request->cnpj,
+        'data_pedido'=>$request->data_pedido,
+        'Quantidade'=>$request->Quantidade,
+        'produto_id'=>$request->produto_id
+        ];
+
+        Pedido::create($dados);
+        return redirect('pedido')->with('success', "Cadastrado com sucesso!");
 
     }
 
@@ -98,8 +108,8 @@ class PedidoController extends Controller
             } else {
                 $pedido = Pedido::all();
             }
-    
+
             return view('pedido.listPedido')->with(['pedido'=> $pedido]);
         }
-    
+
 }

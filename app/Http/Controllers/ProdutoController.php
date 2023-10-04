@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ProdutoController extends Controller
 {
@@ -15,6 +16,8 @@ class ProdutoController extends Controller
     }
 
     public function createProduto(){
+
+
         $produto = Produto::all();
 
         return view('produto.formProduto')->with(['produto'=> $produto]);
@@ -22,13 +25,23 @@ class ProdutoController extends Controller
 
     public function cadastrarProduto (Request $request) {
 
-        $produto = new Produto();
-        $produto->nome_peca=$request->nome_peca;
-        $produto->codigo = $request->codigo;
-        $produto->tamanho = $request->tamanho;
-        $produto->save();
-        $produto = Produto::all();
-        return view('produto.listproduto')->with(['produto'=> $produto]);
+        $request->validate(['nome_peca'=>'required|max:100',
+        'codigo'=>'required|min:3',
+        'tamanho'=>'required|min:1'
+    ], ['nome_peca'=>"O :attribute é obrigatorio!",
+    'codigo'=>"O :attribute é obrigatorio!",
+    "tamanho"=>'O :attribute é obrigatorio!'
+
+]);
+
+    $dados=['nome_peca'=>$request->nome_peca,
+    'codigo'=>$request->codigo,
+    'tamanho'=>$request->tamanho];
+
+
+    Produto::create($dados);
+
+    return redirect('produto')->with('success', "Cadastrado com sucesso!");
 
     }
 
@@ -47,33 +60,33 @@ class ProdutoController extends Controller
 
         public function update(Request $request, Produto $produto)
         {
-    
+
             $request->validate([
                 'nome_peca.required'=>"O :attribute é obrigatorio!",
                 'codigo.required'=>"O :attribute é obrigatorio!",
                 'tamanho.required'=>"O :attribute é obrigatorio!",
-                
-    
+
+
             ]);
-    
+
             $dados = [
                 'nome_peca'=> $request->nome_peca,
                 'codigo'=> $request->codigo,
                 'tamanho'=> $request->tamanho,
-               
-    
-    
+
+
+
             ];
-    
-    
-    
+
+
+
             Produto::updateOrCreate(
                 ['id'=>$request->id],
                 $dados);
-    
-    
+
+
             return redirect('produto')->with('success', "Atualizado com sucesso!");
-    
+
         }
         public function search(Request $request)
         {
@@ -86,12 +99,12 @@ class ProdutoController extends Controller
             } else {
                 $produto = Produto::all();
             }
-    
+
             return view('produto.listProduto')->with(['produto'=> $produto]);
         }
-    
-    
-    
+
+
+
 
 
 }

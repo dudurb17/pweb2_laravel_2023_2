@@ -44,16 +44,25 @@ class UsuarioController extends Controller
 
     public function createUser(Request $request){
 
-        $dados = ['nome'=> $request->name,
+
+        $request->validate([
+            'name'=>'required|max:100',
+            'email'=>"required|unique:users,email",
+            "password"=>'required|min:5'
+        ],[
+            'name.required'=>"O :attribute é obrigatorio!",
+            'nome.max'=>" Só é permitido 100 caracteres no :attribute !",
+            'email.required'=>"O :attribute é obrigatorio!",
+            'email.unique'=>"Email ja cadastrado",
+            "password.required"=>" O :attribute é obrigatorio!",
+            "password.min"=>"O minino permetido é 5 no :attribute"
+        ]);
+
+        $dados = ['name'=> $request->name,
         'email'=> $request->email,
         'password'=>$request->password,
         ];
-
-        $user = new User();
-        $user->password = $request->password;
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->save();
+        User::create($dados);
         $users = User::all();
         return view('user.listUsers')->with(['users'=> $users]);
 
@@ -73,7 +82,6 @@ class UsuarioController extends Controller
 
         $request->validate([
             'name'=>'required|max:100',
-
         ],[
             'name.required'=>"O :attribute é obrigatorio!",
             'name.max'=>" Só é permitido 120 caracteres no :attribute !",
