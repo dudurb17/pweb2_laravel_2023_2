@@ -46,7 +46,8 @@ class PedidoController extends Controller
         ];
 
         Pedido::create($dados);
-        return redirect('pedido')->with('success', "Cadastrado com sucesso!");
+        $pedido = Pedido::all();
+        return view('pedido.listPedido')->with(['pedido'=> $pedido]);
 
     }
 
@@ -75,6 +76,8 @@ class PedidoController extends Controller
         $request->validate([
             'cnpj.required'=>"O :attribute é obrigatorio!",
             'data_pedido.required'=>"O :attribute é obrigatorio!",
+            'email.required'=>"O :attribute é obrigatorio!",
+            "Quantidade.required"=>"O :attribute é obrigatorio!"
 
         ]);
 
