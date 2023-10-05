@@ -5,12 +5,12 @@
 @section('content')
     <h3 class="pt-4 text-2xl font-medium">Listagem de funcionarios</h3>
 
-    <form action="{{ route('pedido.search') }}" method="post">
+    <form action="{{ route('funcionario.search') }}" method="post">
         @csrf
         <!-- cria um hash de segurança -->
         <button
             class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
-            type="submit"><a href="{{ route('pedido.create') }}">Cadastrar</a></button>
+            type="submit"><a href="{{ route('funcionario.create') }}">Cadastrar</a></button>
 
         <button
             class="rounded-full text-neutral-100 bg-yellow-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
@@ -22,8 +22,9 @@
             <div class="relative mb-6" data-te-input-wrapper-init>
                 <select name="tipo"
                     class="g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="cnpj">CNPJ</option>
-                    <option value="data_pedido">Data pedido</option>
+                    <option value="nome">Nome</option>
+                    <option value="cpf">CPF</option>
+                    <option value="Cargo">Cargo</option>
 
 
                 </select>
@@ -71,9 +72,9 @@
 
 
                                     <td class="whitespace-nowrap px-6 py-4"><a
-                                            href="{{ route('produto.edit', $item->id) }}">Editar</a></td>
+                                            href="{{ route('funcionario.edit', $item->id) }}">Editar</a></td>
                                     <td class="whitespace-nowrap px-6 py-4"><a
-                                            href="{{ route('produto.destroy', $item->id) }}"
+                                            href="{{ route('funcionario.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>
                                 </tr>

@@ -14,6 +14,26 @@ Route::get('/', function () {
 Route::get('/funcionario',
     [funcionarioController::class, 'listFuncionario'])->name('funcionario.listFuncionario');
 
+Route::get('/funcionario/create',
+    [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
+
+
+Route::post('/funcionario/cadastrar',
+[funcionarioController::class, 'cadastrarFuncionario'])->name('funcionario.cadastrar');
+
+Route::get('/funcionario/edit/{id}',
+[funcionarioController::class, 'edit'])->name('funcionario.edit');
+
+Route::post('/funcionario/update/{id}',
+    [funcionarioController::class, 'update'])->name('funcionario.update');
+
+Route::get('/funcionario/destroy/{id}',
+    [funcionarioController::class, 'destroyFuncionario'])->name('funcionario.destroy');
+
+Route::post('/funcionario/search',
+    [funcionarioController::class, 'search'])->name('funcionario.search');
+    
+
 //chamar uma função do controlador
 Route::get('/usuario', [UsuarioController::class, 'index']);
 

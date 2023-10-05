@@ -56,7 +56,7 @@ class ProdutoController extends Controller
         $produto = Produto::find($id); //select * from aluno where id = $id
         return view('produto.formProduto')->with([
             'produto'=> $produto]);
-        }
+    }
 
         public function update(Request $request, Produto $produto)
         {
