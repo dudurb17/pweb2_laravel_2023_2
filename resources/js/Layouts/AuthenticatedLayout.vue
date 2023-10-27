@@ -35,7 +35,7 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('produto.list')"
                                     :active="route().current('dashboard')"
                                 >
-                                    teste
+                                    Inicio do aplicativo
                                 </NavLink>
                             </div>
                         </div>
