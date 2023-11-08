@@ -54,9 +54,6 @@
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
                             de funcionarios</a>
 
-                            <a href= "{{route('logout')}}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Sair</a>
-
 
 
 
@@ -78,6 +75,17 @@
                 <a href="{{ route('user.formUser') }}"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Cadastrar
                     Usuario</a>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a
+                    class="text-gray-300 block px-4 py-2 text-sm"
+                    href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
             </div>
         </div>
     </div>
