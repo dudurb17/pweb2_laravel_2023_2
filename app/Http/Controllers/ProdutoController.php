@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use Symfony\Contracts\Service\Attribute\Required;
+use PDF;
 
 class ProdutoController extends Controller
 {
@@ -118,6 +119,19 @@ if($imagem){
 
             return view('produto.listProduto')->with(['produto'=> $produto]);
         }
+
+        public function report(){
+            //select * from aluno order by nome
+            $produto = Produto::orderBy('nome_peca')->get();
+
+            $data = [
+                'title'=>"Relatorio Listagem dos Produtos",
+                'produto'=> $produto
+            ];
+
+            $pdf = PDF::loadView('produto.report',$data);
+            return $pdf->download("listagem_produtos.pdf");
+    }
 
 
 

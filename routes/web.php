@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\funcionarioController;
+use App\Http\Controllers\SalarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/funcionario',
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/funcionario',
     [funcionarioController::class, 'listFuncionario'])->name('funcionario.listFuncionario');
+
+Route::get('/salario', [SalarioController::class, 'index'])->name("salario.list");
+
+Route::get('/salario', [SalarioController::class, 'index'])->name("salario.list");
+Route::get('/salario/chart/',
+[SalarioController::class, 'chart'])->name('salario.char');
+
+Route::get('/salario/create',
+    [SalarioController::class, 'create'])->name('salario.create');
+    Route::post('/salario/store',
+    [SalarioController::class, 'store'])->name('salario.store');
 
 Route::get('/funcionario/create',
     [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
@@ -90,6 +102,8 @@ Route::post('/user/search',
 
 Route::post('/produto/search',
     [ProdutoController::class, 'search'])->name('produto.search');
+    Route::get('/produto/report/',
+[ProdutoController::class, 'report'])->name('produto.report');
 
 Route::post('/pedido/search',
     [PedidoController::class, 'search'])->name('pedido.search');

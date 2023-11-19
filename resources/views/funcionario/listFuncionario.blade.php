@@ -72,9 +72,9 @@
                                     <td class="py-2 px-4 border">{{ $item->nome }}</td>
                                     <td class="py-2 px-4 border">{{ $item->cpf }}</td>
                                     <td class="py-2 px-4 border">{{ $item->cargo }}</td>
-                                    <td class="py-2 px-4 border"><a
+                                    <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                             href="{{ route('funcionario.edit', $item->id) }}">Editar</a></td>
-                                    <td class="py-2 px-4 border"><a
+                                    <td class="py-2 px-4 border"><a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                             href="{{ route('funcionario.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>
