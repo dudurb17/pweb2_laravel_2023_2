@@ -5,7 +5,7 @@
 @section('content')
     <h3 class="pt-4 text-2xl font-medium">Listagem de funcionarios</h3>
 
-    <form action="{{ route('funcionario.search') }}" method="post">
+    <form action="{{ route('salario.search') }}" method="post">
         @csrf
         <!-- cria um hash de segurança -->
         <button
@@ -24,11 +24,8 @@
             <div class="relative mb-6" data-te-input-wrapper-init>
                 <select name="tipo"
                     class="g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="nome">Nome</option>
-                    <option value="cpf">CPF</option>
-                    <option value="Cargo">Cargo</option>
-
-
+                    <option value="salario">Salario</option>
+                    <option value="caraga_horaria">Carga Horaria</option>
                 </select>
             </div>
             <div class="relative mb-6" data-te-input-wrapper-init>

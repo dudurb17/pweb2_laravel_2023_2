@@ -45,6 +45,9 @@ Route::get('/salario/create',
     Route::post('/salario/store',
     [SalarioController::class, 'store'])->name('salario.store');
 
+    Route::post('/salario/search',
+    [SalarioController::class, 'search'])->name('salario.search');
+
     Route::get('/salario/edit/{id}',
 [SalarioController::class, 'edit'])->name('salario.edit');
 Route::get('/salario/destroy/{id}',

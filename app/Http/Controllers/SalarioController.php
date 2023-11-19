@@ -115,4 +115,19 @@ Salario::create($dados);
                       'alunosNotas'=> $cargaHoraria->build()
     ]);
     }
+
+    public function search(Request $request)
+        {
+            if(!empty($request->valor)){
+                $salario = Salario::where(
+                    $request->tipo,
+                     'like' ,
+                    "%". $request->valor."%"
+                    )->get();
+            } else {
+                $salario = Salario::all();
+            }
+
+            return view('salario.list')->with(['salario'=> $salario]);
+        }
 }

@@ -82,18 +82,26 @@ if($imagem){
                 'nome_peca.required'=>"O :attribute é obrigatorio!",
                 'codigo.required'=>"O :attribute é obrigatorio!",
                 'tamanho.required'=>"O :attribute é obrigatorio!",
-
-
             ]);
 
             $dados = [
                 'nome_peca'=> $request->nome_peca,
                 'codigo'=> $request->codigo,
                 'tamanho'=> $request->tamanho,
-
-
-
+                'image'=>$request->image,
             ];
+            $imagem = $request->file('image');
+            //verifica se existe imagem no formulário
+            if($imagem){
+                $nome_arquivo =
+                date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+                $diretorio ="img/events/";
+                //salva imagem em uma pasta do sistema
+                $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+                $dados['image'] = $diretorio.$nome_arquivo;
+            }
 
 
 

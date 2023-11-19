@@ -73,8 +73,21 @@ if($imagem){
             'nome'=> $request->nome,
             'cpf'=> $request->cpf,
             'cargo'=> $request->cargo,
-
+             "image"=> $request->image,
         ];
+        $imagem = $request->file('image');
+            //verifica se existe imagem no formulário
+            if($imagem){
+                $nome_arquivo =
+                date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+                $diretorio ="img/events/";
+                //salva imagem em uma pasta do sistema
+                $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+                $dados['image'] = $diretorio.$nome_arquivo;
+            }
+
 
 
 
