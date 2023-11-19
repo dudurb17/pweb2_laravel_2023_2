@@ -45,6 +45,14 @@ Route::get('/salario/create',
     Route::post('/salario/store',
     [SalarioController::class, 'store'])->name('salario.store');
 
+    Route::get('/salario/edit/{id}',
+[SalarioController::class, 'edit'])->name('salario.edit');
+Route::get('/salario/destroy/{id}',
+    [SalarioController::class, 'destroy'])->name('salario.destroy');
+
+Route::post('/salario/update/{id}',
+    [SalarioController::class, 'update'])->name('salario.update');
+
 Route::get('/funcionario/create',
     [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
 

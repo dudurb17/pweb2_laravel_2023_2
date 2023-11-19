@@ -64,9 +64,13 @@ Salario::create($dados);
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Salario $salario)
+    public function edit($id)
     {
-        //
+        $salario = Salario::find($id); //select * from aluno where id = $id
+
+        $funcionario = Funcionario::orderBy('nome')->get();
+        return view('salario.form')->with([
+            'salario'=> $salario, "funcionario"=>$funcionario]);
     }
 
     /**
@@ -74,15 +78,35 @@ Salario::create($dados);
      */
     public function update(Request $request, Salario $salario)
     {
-        //
+
+        $request->validate([
+            'salario.required'=>"O :attribute é obrigatorio!",
+            'carga_horaria.required'=>"O :attribute é obrigatorio!",
+        ]);
+
+        $dados = [
+            'funcionario_id'=>$request->funcionario_id,
+            'salario'=> $request->salario,
+            'carga_horaria'=> $request->carga_horaria,
+        ];
+
+
+
+        Salario::updateOrCreate(
+            ['id'=>$request->id],
+            $dados);
+
+
+        return redirect('salario')->with('success', "Atualizado com sucesso!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Salario $salario)
+    public function destroy($id)
     {
-        //
+        Salario::destroy($id);
+        return redirect('salario')->with('success', "Removido com sucesso!");
     }
 
     public function chart(SalarioPizza $cargaHoraria, SalarioChar $salario){

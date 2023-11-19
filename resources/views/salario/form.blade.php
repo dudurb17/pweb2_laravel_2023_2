@@ -6,7 +6,7 @@
     @php
         // dd($produto); // é igual ao var_dump()
         if (!empty($salario->id)) {
-            $route = route('salario.update', $produto->id);
+            $route = route('salario.update', $salario->id);
         } else {
             $route = route('salario.store');
         }
@@ -29,17 +29,12 @@
                     </div>
                 @endif
 
-
                 {{-- @if (!empty($produto->id))
                     @method('PUT')
                 @endif --}}
 
                 <input type="hidden" name="id"
                     value="@if (!empty($produto->id)) {{ $produto->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
-
-
-
-
                     <label class="block">
                         <span class="text-gray-700">Usuario</span>
                         <select name="funcionario_id"

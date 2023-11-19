@@ -62,9 +62,9 @@
                                     <td class="py-2 px-4 border">{{ $item->salario }}</td>
                                     <td class="py-2 px-4 border">{{ $item->carga_horaria }}</td>
                                     <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                            href="{{ route('funcionario.edit', $item->id) }}">Editar</a></td>
+                                            href="{{ route('salario.edit', $item->id) }}">Editar</a></td>
                                     <td class="py-2 px-4 border"><a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                            href="{{ route('funcionario.destroy', $item->id) }}"
+                                            href="{{ route('salario.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>
                                 </tr>
