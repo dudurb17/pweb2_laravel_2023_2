@@ -11,10 +11,10 @@
         <button
             class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             type="submit"><a href="{{ route('pedido.create') }}">Cadastrar</a></button>
-            <a  class="rounded-full text-neutral-100 bg-orange-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
+            <a  class="rounded-full text-neutral-100 bg-orange-500 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             href="{{ route('pedido.report') }}" target="_blank">Relatório</a>
         <button
-            class="rounded-full text-neutral-100 bg-yellow-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
+            class="rounded-full text-neutral-100 bg-yellow-500 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             type="submit">
             Buscar
         </button>

@@ -15,7 +15,7 @@
                     href="{{ route('salario.char') }}" target="_blank">Gráfico</a>
 
         <button
-            class="rounded-full text-neutral-100 bg-yellow-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
+            class="rounded-full text-neutral-100 bg-yellow-500 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             type="submit">
             Buscar
         </button>
