@@ -23,7 +23,7 @@ Route::get('/', function () {
 })->name("home");
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -60,10 +60,13 @@ Route::get('/usuario', [UsuarioController::class, 'index']);
 Route::get('/users',
     [UsuarioController::class, 'listUsers'])->name('user.list');
 
+
 //chama o formulário do user
 Route::get('/user/create', function () {
     return view('user.formUser');
 })->name('user.formUser');
+Route::get('/pedidoUser/{id}',
+    [UsuarioController::class, 'index'])->name('pedidosUser.list');
 
 //realiza a ação de cadastrar um novo usuario
 Route::post('/user/cadastrar',

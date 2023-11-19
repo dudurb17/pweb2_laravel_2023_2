@@ -61,6 +61,14 @@
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($funcionario->cargo)) {{ $funcionario->cargo }}@elseif(!empty(old('cargo'))) {{ old('cargo') }} @else{{ '' }} @endif"><br><br>
                 </label>
+                <input
+                        class="block w-full text-sm text-slate-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-green-50 file:text-green-700
+                                hover:file:bg-green-100"
+                        type="file" name="image"><br>
         </div>
         <br>
         <br>

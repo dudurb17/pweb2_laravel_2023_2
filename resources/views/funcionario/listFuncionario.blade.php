@@ -46,9 +46,10 @@
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <table class="min-w-full text-left text-sm font-light">
-                        <thead class="border-b font-medium dark:border-neutral-500">
+                        <thead class="bg-gray-800 text-white">
                             <tr>
                                 <th scope="col" class="px-6 py-4">id</th>
+                                <th scope="col" class="px-6 py-4">Image</th>
                                 <th scope="col" class="px-6 py-4">Nome</th>
                                 <th scope="col" class="px-6 py-4">CPF</th>
                                 <th scope="col" class="px-6 py-4">Cargo</th>
@@ -60,20 +61,20 @@
                         </thead>
                         <tbody>
                             @foreach ($funcionario as $item)
-                                {{-- @dd($item) --}}
+                            @php
+                                $nome_imagem = !empty($item->image) ? $item->image : 'img/events/sem_imagem.png';
+                            @endphp
                                 <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->nome }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->cpf }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->cargo }}</td>
-
-
-
-
-                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                    <td class="py-2 px-4 border">{{ $item->id }}</td>
+                                    <td class="py-2 px-4 border"><img src="/storage/{{$nome_imagem}}" width="100px"
+                                        alt="imagem"></td>
+                                    <td class="py-2 px-4 border">{{ $item->nome }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->cpf }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->cargo }}</td>
+                                    <td class="py-2 px-4 border"><a
                                             href="{{ route('funcionario.edit', $item->id) }}">Editar</a></td>
-                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                    <td class="py-2 px-4 border"><a
                                             href="{{ route('funcionario.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>

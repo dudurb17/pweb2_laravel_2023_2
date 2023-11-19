@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
+use Illuminate\Support\Facades\Storage;
 
 class funcionarioController extends Controller
 {
@@ -33,6 +34,19 @@ class funcionarioController extends Controller
     $dados=['nome'=>$request->nome,
     'cpf'=>$request->cpf,
     'cargo'=>$request->cargo];
+    $imagem = $request->file('image');
+    //verifica se existe imagem no formulário
+if($imagem){
+    $nome_arquivo =
+    date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+    $diretorio = "img/events/";
+    //salva imagem em uma pasta do sistema
+    $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+    $dados['image'] = $diretorio.$nome_arquivo;
+}
+
 
 
     Funcionario::create($dados);
@@ -73,8 +87,15 @@ class funcionarioController extends Controller
 
     }
     public function destroyFuncionario ($id){
-        Funcionario::destroy($id);
+
+
+        $funcionario = Funcionario::findOrFail($id);
+
+
+        Storage::delete('public/img/events/' . $funcionario->imagem);
+        $funcionario->delete();
         return redirect('funcionario')->with('success', "Removido com sucesso!");
+
 
     }
     public function search(Request $request)

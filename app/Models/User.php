@@ -42,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function pedidos(){
+        //relacionamento 1 - n
+        return $this->hasMany(Pedido::class);
+    }
 }

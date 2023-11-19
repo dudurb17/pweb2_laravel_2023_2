@@ -10,7 +10,8 @@ class ProdutoController extends Controller
 {
     public function listProduto () {
 
-    $produto = Produto::all();
+
+        $produto = Produto::all();
 
         return view('produto.listProduto')->with(['produto'=> $produto]);
     }
@@ -37,6 +38,21 @@ class ProdutoController extends Controller
     $dados=['nome_peca'=>$request->nome_peca,
     'codigo'=>$request->codigo,
     'tamanho'=>$request->tamanho];
+
+
+
+    $imagem = $request->file('image');
+    //verifica se existe imagem no formulário
+if($imagem){
+    $nome_arquivo =
+    date('YmdHis').'.'.$imagem->getClientOriginalExtension();
+
+    $diretorio = "img/events/";
+    //salva imagem em uma pasta do sistema
+    $imagem->storeAs($diretorio,$nome_arquivo,'public');
+
+    $dados['image'] = $diretorio.$nome_arquivo;
+}
 
 
     Produto::create($dados);

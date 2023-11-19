@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funcionario', function (Blueprint $table) {
-            $table->id();
-            $table->string("nome");
-            $table->string("cpf");
-            $table->string("cargo");
+        Schema::table('produto', function (Blueprint $table) {
             $table->string("image", 150,)->nullable();
-            $table->timestamps();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('funcionario');
+        Schema::table('produto', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

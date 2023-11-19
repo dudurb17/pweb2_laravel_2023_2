@@ -9,6 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Pedido extends Model
 {
+    protected $table = "pedidos";
     use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
         'user_id',
@@ -17,6 +18,7 @@ class Pedido extends Model
         'email',
         'Quantidade',
         'produto_id'
+
     ];
 
     public function user(){
@@ -27,4 +29,5 @@ class Pedido extends Model
         return $this->belongsTo(Produto::class,
             'produto_id','id');
     }
+
 }

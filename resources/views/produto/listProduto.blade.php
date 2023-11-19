@@ -42,34 +42,35 @@
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <table class="min-w-full text-left text-sm font-light">
-                        <thead class="border-b font-medium dark:border-neutral-500">
+                        <thead class="bg-gray-800 text-white">
                             <tr>
                                 <th scope="col" class="px-6 py-4">id</th>
+                                <th scope="col" class="px-6 py-4">Imagm</th>
                                 <th scope="col" class="px-6 py-4">Nome da peça</th>
-
                                 <th scope="col" class="px-6 py-4">Codigo</th>
                                 <th scope="col" class="px-6 py-4">Tamanho</th>
-
-
                                 <th scope="col" class="px-6 py-4">Ações</th>
                                 <th scope="col" class="px-6 py-4">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($produto as $item)
+                            @php
+                            $nome_imagem = !empty($item->image) ? $item->image : 'img/events/sem_imagem.png';
+
+                        @endphp
+
                                 <tr
                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->nome_peca }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->codigo }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->tamanho }}</td>
-
-
-
-
-                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                    <td class="py-2 px-4 border">{{ $item->id }}</td>
+                                    <td class="py-2 px-4 border"><img src="/storage/{{$nome_imagem}}" width="100px"
+                                        alt="imagem"></td>
+                                    <td class="py-2 px-4 border">{{ $item->nome_peca }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->codigo }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->tamanho }}</td>
+                                    <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                             href="{{ route('produto.edit', $item->id) }}">Editar</a></td>
-                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                    <td class="py-2 px-4 border"><a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                             href="{{ route('produto.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>

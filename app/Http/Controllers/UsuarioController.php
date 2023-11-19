@@ -9,36 +9,17 @@ use App\Models\User;
 
 class UsuarioController extends Controller
 {
-    function index()
-    {
+    public function index($id){
 
-        //controller - app/http/Controllers
-        //Model - app/Model
-        //view - resouces/view
-        //rotas - router/web.php
-        $pessoa01 = new stdClass();
-        $pessoa01->nome = "Jackson";
-        $pessoa01->idade = 35;
 
-        $pessoa02 = new stdClass();
-        $pessoa02->nome = "Maria";
-        $pessoa02->idade = 15;
+        $usuarioPedidos = User::with('pedidos')->find($id);
+        return view('pedidosUser.list')->with(['pedido'=> $usuarioPedidos->pedidos]);
 
-        $pessoa03 = new stdClass();
-        $pessoa03->nome = "Chaves";
-        $pessoa03->idade = 16;
 
-        $pessoas = [$pessoa01, $pessoa02, $pessoa03];
-
-       // dd($pessoas);
-
-        return view('index', ["pessoas" => $pessoas]);
     }
-
     public function listUsers()
     {
-        $users = User::all();
-
+        $users =  User::with('pedidos')->get();
         return view('user.listUsers')->with(['users'=> $users]);
     }
 
