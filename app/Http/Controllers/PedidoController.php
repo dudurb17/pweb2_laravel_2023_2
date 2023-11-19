@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\models\Pedido;
 use App\Models\User;
 use App\Models\Produto;
+use PDF;
 
 
 class PedidoController extends Controller
@@ -114,5 +115,18 @@ class PedidoController extends Controller
 
             return view('pedido.listPedido')->with(['pedido'=> $pedido]);
         }
+        public function report(){
+            //select * from aluno order by nome
+            $pedido = Pedido::orderBy('user_id')->get();
+
+            $data = [
+                'title'=>"Relatorio Listagem dos Produtos",
+                'pedido'=> $pedido
+            ];
+
+            $pdf = PDF::loadView('pedido.report',$data);
+            return $pdf->download("listagem_produtos.pdf");
+    }
+
 
 }

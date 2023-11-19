@@ -59,6 +59,9 @@ Route::post('/salario/update/{id}',
 Route::get('/funcionario/create',
     [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
 
+Route::get('/pedidos/report/',
+    [PedidoController::class, 'report'])->name('pedido.report');
+
 
 Route::post('/funcionario/cadastrar',
 [funcionarioController::class, 'cadastrarFuncionario'])->name('funcionario.cadastrar');

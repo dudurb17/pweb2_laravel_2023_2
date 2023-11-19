@@ -11,7 +11,8 @@
         <button
             class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             type="submit"><a href="{{ route('pedido.create') }}">Cadastrar</a></button>
-
+            <a  class="rounded-full text-neutral-100 bg-orange-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
+            href="{{ route('pedido.report') }}" target="_blank">Relatório</a>
         <button
             class="rounded-full text-neutral-100 bg-yellow-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             type="submit">
@@ -45,7 +46,7 @@
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <table class="min-w-full text-left text-sm font-light">
-                        <thead class="border-b font-medium dark:border-neutral-500">
+                        <thead class="bg-gray-800 text-white">
                             <tr>
                                 <th scope="col" class="px-6 py-4">id</th>
                                 <th scope="col" class="px-6 py-4">User Id</th>
@@ -63,17 +64,17 @@
                             @foreach ($pedido as $item)
                                 {{-- @dd($item) --}}
                                 <tr
-                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                    <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $item->id }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->user->name }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->product->nome_peca }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->cnpj }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->email }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->data_pedido }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4">{{ $item->Quantidade }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                class="py-2 px-4 border">
+                                    <td class="py-2 px-4 border">{{ $item->id }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->user->name }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->product->nome_peca }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->cnpj }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->email }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->data_pedido }}</td>
+                                    <td class="py-2 px-4 border">{{ $item->Quantidade }}</td>
+                                    <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                             href="{{ route('pedido.edit', $item->id) }}">Editar</a></td>
-                                    <td class="whitespace-nowrap px-6 py-4"><a
+                                    <td class="py-2 px-4 border"><a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                             href="{{ route('pedido.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>

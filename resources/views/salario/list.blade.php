@@ -3,7 +3,7 @@
 @section('titulo', 'Listagem de Usuarios')
 
 @section('content')
-    <h3 class="pt-4 text-2xl font-medium">Listagem de funcionarios</h3>
+    <h3 class="pt-4 text-2xl font-medium">Listagem da folha de pagamento</h3>
 
     <form action="{{ route('salario.search') }}" method="post">
         @csrf
@@ -12,7 +12,7 @@
             class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
             type="submit"><a href="{{ route('salario.create') }}">Cadastrar</a></button>
             <a class="rounded-full text-neutral-100 bg-orange-500 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
-                    href="{{ route('salario.char') }}" target="_blank">Gráfico</a><br>
+                    href="{{ route('salario.char') }}" target="_blank">Gráfico</a>
 
         <button
             class="rounded-full text-neutral-100 bg-yellow-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
