@@ -79,6 +79,10 @@ if($imagem){
         {
 
             $request->validate([
+                'nome_peca'=>'required|min:3',
+                'codigo'=>'required|min:2',
+                'tamanho'=>'required|min:1'
+            ],[
                 'nome_peca.required'=>"O :attribute é obrigatorio!",
                 'codigo.required'=>"O :attribute é obrigatorio!",
                 'tamanho.required'=>"O :attribute é obrigatorio!",

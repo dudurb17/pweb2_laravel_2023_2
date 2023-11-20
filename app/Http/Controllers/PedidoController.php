@@ -75,6 +75,12 @@ class PedidoController extends Controller
     {
 
         $request->validate([
+            'cnpj'=>'required|min:3',
+            'data_pedido'=>'required|min:2',
+            'email'=>'required|min:2',
+            'Quantidade'=>'required|min:1',
+
+        ],[
             'cnpj.required'=>"O :attribute é obrigatorio!",
             'data_pedido.required'=>"O :attribute é obrigatorio!",
             'email.required'=>"O :attribute é obrigatorio!",

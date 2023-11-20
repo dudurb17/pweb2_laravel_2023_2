@@ -35,11 +35,7 @@
                     type="text" name="valor" placeholder="Pesquisar">
             </div>
             <!--Submit button-->
-
-
         </div>
-
-
     </form>
 
 

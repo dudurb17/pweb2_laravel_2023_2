@@ -41,7 +41,7 @@
 
                 <label class="block">
                     <span class="text-gray-700">Nome da funcionaria</span>
-                    <input type="text" name="nome"
+                    <input type="text" name="nome" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($funcionario->nome)) {{ $funcionario->nome }}@elseif(!empty(old('nome'))) {{ old('nome') }} @else{{ '' }} @endif"><br><br>
@@ -49,14 +49,14 @@
 
                 <label class="block">
                     <span class="text-gray-700">CPF</span>
-                    <input type="text" name="cpf"
+                    <input type="text" name="cpf" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($funcionario->cpf)) {{ $funcionario->cpf }}@elseif(!empty(old('cpf'))) {{ old('cpf') }} @else{{ '' }} @endif"><br><br>
                 </label>
                 <label class="block">
                     <span class="text-gray-700">Cargo</span>
-                    <input type="text" name="cargo"
+                    <input type="text" name="cargo" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($funcionario->cargo)) {{ $funcionario->cargo }}@elseif(!empty(old('cargo'))) {{ old('cargo') }} @else{{ '' }} @endif"><br><br>

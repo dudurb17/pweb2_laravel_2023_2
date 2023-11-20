@@ -61,12 +61,16 @@ Route::post('/salario/update/{id}',
 Route::get('/funcionario/create',
     [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
 Route::get('/loja/create',[LojaController::class,'create'])->name('loja.create');
+Route::post('/loja/create',[LojaController::class,'create'])->name('loja.create');
 
-Route::post('/loja/store',
-    [LojaController::class, 'store'])->name('loja.store');
+Route::post('/loja/update',
+    [LojaController::class, 'update'])->name('loja.update');
 
 Route::get('/pedidos/report/',
     [PedidoController::class, 'report'])->name('pedido.report');
+
+Route::get('/loja/edit/{id}',
+    [LojaController::class, 'edit'])->name('loja.edit');
 
 
 Route::post('/funcionario/cadastrar',
@@ -115,6 +119,9 @@ Route::post('/user/update/{id}',
 //chama o método para excluir o registro
 Route::get('/user/destroy/{id}',
     [UsuarioController::class, 'destroy'])->name('user.destroy');
+
+    Route::get('/loja/destroy/{id}',
+    [LojaController::class, 'destroy'])->name('loja.destroy');
 
 //chama o método para serch para pesquisar e filtrar o registro da listagem
 Route::post('/user/search',

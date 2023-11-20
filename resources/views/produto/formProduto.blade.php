@@ -41,7 +41,7 @@
 
                 <label class="block">
                     <span class="text-gray-700">Nome peça</span>
-                    <input type="text" name="nome_peca"
+                    <input type="text" name="nome_peca" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($produto->nome_peca)) {{ $produto->nome_peca }}@elseif(!empty(old('nome_peca'))) {{ old('nome_peca') }} @else{{ '' }} @endif"><br><br>
@@ -49,14 +49,14 @@
 
                 <label class="block">
                     <span class="text-gray-700">Codigo da peça</span>
-                    <input type="text" name="codigo"
+                    <input type="text" name="codigo" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($produto->codigo)) {{ $produto->codigo }}@elseif(!empty(old('codigo'))) {{ old('codigo') }} @else{{ '' }} @endif"><br><br>
                 </label>
                 <label class="block">
                     <span class="text-gray-700">Tamanho da peça</span>
-                    <input type="text" name="tamanho"
+                    <input type="text" name="tamanho" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($produto->tamanho)) {{ $produto->tamanho }}@elseif(!empty(old('tamanho'))) {{ old('tamanho') }} @else{{ '' }} @endif"><br><br>

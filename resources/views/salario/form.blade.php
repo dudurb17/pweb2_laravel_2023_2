@@ -50,14 +50,14 @@
 
                 <label class="block">
                     <span class="text-gray-700">Salario</span>
-                    <input type="text" name="salario"
+                    <input type="text" name="salario" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($salario->salario)) {{ $salario->salario }}@elseif(!empty(old('salario'))) {{ old('salario') }} @else{{ '' }} @endif"><br><br>
                 </label>
                 <label class="block">
                     <span class="text-gray-700">Carga horaria</span>
-                    <input type="text" name="carga_horaria"
+                    <input type="text" name="carga_horaria" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($salario->carga_horaria)) {{ $salario->carga_horaria }}@elseif(!empty(old('carga_horaria'))) {{ old('carga_horaria') }} @else{{ '' }} @endif"><br><br>

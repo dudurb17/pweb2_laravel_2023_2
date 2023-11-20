@@ -62,9 +62,9 @@
                                     <td class="py-2 px-4 border">{{ $item->numero }}</td>
                                     <td class="py-2 px-4 border">{{ $item->cidade }}</td>
                                     <td class="py-2 px-4 border"><a class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                            href="{{ route('produto.edit', $item->id) }}">Editar</a></td>
+                                            href="{{ route('loja.edit', $item->id) }}">Editar</a></td>
                                     <td class="py-2 px-4 border"><a class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                            href="{{ route('produto.destroy', $item->id) }}"
+                                            href="{{ route('loja.destroy', $item->id) }}"
                                             onclick="return confirm('Deseja Excluir?')">Excluir</a>
                                     </td>
                                 </tr>

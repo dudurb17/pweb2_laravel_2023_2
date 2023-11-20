@@ -41,7 +41,7 @@
 
                 <label class="block">
                     <span class="text-gray-700">Endereço</span>
-                    <input type="text" name="endereco"
+                    <input type="text" name="endereco" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($loja->endereco)) {{ $loja->endereco }}@elseif(!empty(old('endereco'))) {{ old('endereco') }} @else{{ '' }} @endif"><br><br>
@@ -49,14 +49,14 @@
 
                 <label class="block">
                     <span class="text-gray-700">Numero</span>
-                    <input type="number" name="numero"
+                    <input type="text" name="numero" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($loja->numero)) {{ $loja->numero }}@elseif(!empty(old('numero'))) {{ old('numero') }} @else{{ '' }} @endif"><br><br>
                 </label>
                 <label class="block">
                     <span class="text-gray-700">Cidade</span>
-                    <input type="text" name="cidade"
+                    <input type="text" name="cidade" required
                         class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($loja->cidade)) {{ $loja->cidade }}@elseif(!empty(old('cidade'))) {{ old('cidade') }} @else{{ '' }} @endif"><br><br>
