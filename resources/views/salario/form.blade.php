@@ -36,7 +36,7 @@
                 <input type="hidden" name="id"
                     value="@if (!empty($produto->id)) {{ $produto->id }}@elseif (!empty(old('id'))){{ old('id') }}@else{{ '' }} @endif">
                     <label class="block">
-                        <span class="text-gray-700">Usuario</span>
+                        <span class="text-gray-700">Funcionario</span>
                         <select name="funcionario_id"
                             class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200
                     focus:ring-0 focus:border-black">

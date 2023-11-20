@@ -8,7 +8,8 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\funcionarioController;
 use App\Http\Controllers\SalarioController;
 use App\Http\Controllers\LojaController;
-
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CategoriaProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -184,6 +185,10 @@ Route::get('/produto/edit/{id}',
 
 Route::post('/produto/update/{id}',
     [ProdutoController::class, 'update'])->name('produto.update');
+
+
+Route::get('/categoriaProduto',
+    [CategoriaProdutoController::class, 'index'])->name('categoriaProduto.list');
 });
 
 require __DIR__.'/auth.php';

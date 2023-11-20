@@ -41,23 +41,25 @@
                             class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                             aria-current="page">Home</a>
                         <a href="{{ route('user.list') }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
                             Usuarios</a>
                         <a href="{{ route('produto.list') }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
                             Produtos</a>
                         <a href="{{ route('pedido.list') }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
                             Pedidos</a>
 
                         <a href="{{ route('funcionario.listFuncionario') }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
-                            de funcionarios</a>
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                            funcionarios</a>
                         <a href="{{ route('salario.list') }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Listagem
-                            de salario</a>
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                            salario</a>
                             <a href="{{ route('loja.list') }}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Lojas</a>
+                            <a href="{{ route('categoriaProduto.list') }}"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">n-n</a>
 
 
 
