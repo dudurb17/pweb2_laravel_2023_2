@@ -61,6 +61,13 @@
                 focus:ring-0 focus:border-black"
                         value="@if (!empty($produto->tamanho)) {{ $produto->tamanho }}@elseif(!empty(old('tamanho'))) {{ old('tamanho') }} @else{{ '' }} @endif"><br><br>
                 </label>
+                @php
+                            $nome_imagem = !empty($produto->image) ? $produto->image : 'img/events/sem_imagem.png';
+                @endphp
+                <div>
+                    <img class="h-40 w-40 object-cover rounded-full" src="/storage/{{ $nome_imagem }}" width="300px"
+                        alt="imagem">
+                    <br>
                 <input
                         class="block w-full text-sm text-slate-500
                                 file:mr-4 file:py-2 file:px-4
