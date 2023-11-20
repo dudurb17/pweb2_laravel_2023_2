@@ -61,7 +61,7 @@ Route::post('/salario/update/{id}',
 Route::get('/funcionario/create',
     [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
 Route::get('/loja/create',[LojaController::class,'create'])->name('loja.create');
-Route::post('/loja/create',[LojaController::class,'create'])->name('loja.create');
+Route::post('/loja/store',[LojaController::class,'store'])->name('loja.store');
 
 Route::post('/loja/update',
     [LojaController::class, 'update'])->name('loja.update');
@@ -103,6 +103,9 @@ Route::get('/user/create', function () {
 })->name('user.formUser');
 Route::get('/pedidoUser/{id}',
     [UsuarioController::class, 'index'])->name('pedidosUser.list');
+
+    Route::post('/loja/search',
+    [LojaController::class, 'search'])->name('loja.search');
 
 //realiza a ação de cadastrar um novo usuario
 Route::post('/user/cadastrar',

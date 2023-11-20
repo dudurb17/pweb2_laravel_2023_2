@@ -5,11 +5,7 @@
 @section('content')
 
 
-
-
-
-
-
+<img src="/storage/img/events/coca.jpg" width=100% alt="imagem">
 
 
 

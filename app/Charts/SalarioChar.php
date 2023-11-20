@@ -3,6 +3,7 @@
 namespace App\Charts;
 use App\Models\Salario;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use PhpParser\Node\Stmt\Foreach_;
 
 class SalarioChar
 {
@@ -16,13 +17,19 @@ class SalarioChar
     public function build(): \ArielMejiaDev\LarapexCharts\HorizontalBar
     {
 
-        $salario = Salario::all()->count();
+        $salario = Salario::all();
+
+        $i=0;
+        foreach ($salario as $item) {
+
+            $salarioArray[$i]=$item->salario;
+            $i++;
+        }
         return $this->chart->horizontalBarChart()
-            ->setTitle('Los Angeles vs Miami.')
-            ->setSubtitle('Wins during season 2021.')
+            ->setTitle('Salario')
+            ->setSubtitle('Salario')
             ->setColors(['#FFC107', '#D32F2F'])
-            ->addData('Salarios', [ $salario])
-            
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
+            ->addData('Salario dos funcionario', $salarioArray)
+            ->setXAxis(['salarios']);
     }
 }

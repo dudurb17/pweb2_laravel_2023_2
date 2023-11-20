@@ -1,13 +1,13 @@
 
 @extends('base.app')
 
-@section('titulo', 'Listagem de Produto')
+@section('titulo', 'Listagem de lojas')
 
 @section('content')
-    <h3 class="pt-4 text-2xl font-medium">Listagem de Produtos</h3>
+    <h3 class="pt-4 text-2xl font-medium">Listagem de lojas</h3>
 
 
-    <form action="{{ route('produto.search') }}" method="post">
+    <form action="{{ route('loja.search') }}" method="post">
         @csrf
         <!-- cria um hash de segurança -->
         <button
@@ -24,9 +24,9 @@
             <div class="relative mb-6" data-te-input-wrapper-init>
                 <select name="tipo"
                     class="g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="nome_peca">Nome</option>
-                    <option value="codigo">Codigo</option>
-                    <option value="tamanho">Tamanho</option>
+                    <option value="endereco">Endereço</option>
+                    <option value="numero">Numero</option>
+                    <option value="cidade">Cidade</option>
 
                 </select>
 
