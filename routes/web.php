@@ -7,6 +7,8 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\funcionarioController;
 use App\Http\Controllers\SalarioController;
+use App\Http\Controllers\LojaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ Route::get('/salario', [SalarioController::class, 'index'])->name("salario.list"
 Route::get('/salario', [SalarioController::class, 'index'])->name("salario.list");
 Route::get('/salario/chart/',
 [SalarioController::class, 'chart'])->name('salario.char');
-
+Route::get('/loja',[LojaController::class,'index'])->name('loja.list');
 Route::get('/salario/create',
     [SalarioController::class, 'create'])->name('salario.create');
     Route::post('/salario/store',
@@ -58,6 +60,10 @@ Route::post('/salario/update/{id}',
 
 Route::get('/funcionario/create',
     [funcionarioController::class, 'createFuncionario'])->name('funcionario.create');
+Route::get('/loja/create',[LojaController::class,'create'])->name('loja.create');
+
+Route::post('/loja/store',
+    [LojaController::class, 'store'])->name('loja.store');
 
 Route::get('/pedidos/report/',
     [PedidoController::class, 'report'])->name('pedido.report');
@@ -126,6 +132,8 @@ Route::post('/pedido/search',
 Route::get('/pagina', function () {
     return view('index');
 });
+
+
 
 Route::get('/pedidos',
     [PedidoController::class, 'listPedidos'])->name('pedido.list');
