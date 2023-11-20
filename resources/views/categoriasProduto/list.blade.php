@@ -4,6 +4,9 @@
 
 @section('content')
     <h3 class="pt-4 text-2xl font-medium">Listagem de categorias dos produtos</h3>
+    <button
+            class="rounded-full text-neutral-100 bg-green-700 px-4 py-2 w-40 font-bold hover:bg-green-900 hover:text-neutro-700"
+            type="submit"><a href="{{ route('categoriaProduto.create') }}">Cadastrar</a></button>
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -26,7 +29,7 @@
                                     <td class="py-2 px-4 border">{{ $item->produtos->nome_peca }}</td>
                                     <td class="py-2 px-4 border">{{ $item->categorias->name }}</td>
 
-                                   
+
                                 </tr>
                             @endforeach
                         </tbody>

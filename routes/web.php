@@ -189,6 +189,11 @@ Route::post('/produto/update/{id}',
 
 Route::get('/categoriaProduto',
     [CategoriaProdutoController::class, 'index'])->name('categoriaProduto.list');
+Route::get('/categoriaProduto/create',
+    [CategoriaProdutoController::class, 'create'])->name('categoriaProduto.create');
+Route::post('/categoriaProduto/store',
+    [CategoriaProdutoController::class, 'store'])->name('categoriaProduto.store');
+
 });
 
 require __DIR__.'/auth.php';
